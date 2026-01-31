@@ -31,7 +31,7 @@ const Navbar = () => {
         </nav>
       )}
       <Button variant={'default'} className='hover:cursor-pointer'>
-        <PhoneCall /> {isMobile ? null : <span>Contact</span>}
+        <PhoneCall /> {isMobile ? <span>24/7</span> : <span>Contact 24/7</span>}
       </Button>
     </header>
   );
