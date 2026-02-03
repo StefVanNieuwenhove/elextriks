@@ -6,16 +6,15 @@ type NavLinkProps = {
   href: string;
   icon: React.ReactNode;
   active?: boolean;
-  setActive?: React.Dispatch<React.SetStateAction<string>>;
+  //setActive?: React.Dispatch<React.SetStateAction<string>>;
 };
 
-const NavLink = ({ name, href, icon, active, setActive }: NavLinkProps) => {
+const NavLink = ({ name, href, icon, active }: NavLinkProps) => {
   return (
     <Link key={name} href={href}>
       <Button
         variant={active ? 'default' : 'link'}
-        onClick={setActive ? () => setActive(href) : undefined}
-        className='hover:cursor-pointer hover:underline'>
+        className='hover:cursor-pointer hover:underline text-md'>
         {icon}
         <span>{name}</span>
       </Button>

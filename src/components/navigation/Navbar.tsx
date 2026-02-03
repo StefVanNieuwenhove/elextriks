@@ -6,11 +6,16 @@ import { PhoneCall } from 'lucide-react';
 import NavLink from './NavLink';
 import { SidebarTrigger, useSidebar } from '../ui/sidebar';
 import { Links } from '@/lib/Links';
-import { H1 } from '../Typo';
+import { H1 } from '../typo';
+import { usePathname } from 'next/navigation';
 
 const Navbar = () => {
   const { isMobile } = useSidebar();
-  const [active, setActive] = useState('/');
+  const pathname = usePathname();
+  //const [active, setActive] = useState('/');
+
+  const isActive = (href: string) => pathname === href;
+
   return (
     <header className='w-full h-20 px-5 flex items-center justify-between border-b border-solid border-gray-300'>
       {isMobile && <SidebarTrigger />}
@@ -24,13 +29,13 @@ const Navbar = () => {
               name={link.name}
               href={link.href}
               icon={link.icon}
-              active={active === link.href}
-              setActive={setActive}
+              active={isActive(link.href)}
+              //setActive={setActive}
             />
           ))}
         </nav>
       )}
-      <Button variant={'default'} className='hover:cursor-pointer'>
+      <Button variant={'default'} className='hover:cursor-pointer text-md'>
         <PhoneCall /> {isMobile ? <span>24/7</span> : <span>Contact 24/7</span>}
       </Button>
     </header>
