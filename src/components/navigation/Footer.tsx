@@ -2,7 +2,7 @@ import Image from 'next/image';
 import logo from '../../../public/logo_elextriks.jpeg';
 import { UserRound, PhoneCall, Mail } from 'lucide-react';
 import { Button } from '../ui/button';
-import { TypoLarge } from '../typo';
+import { TypoLarge } from '../typography';
 
 const Footer = () => {
   const year = new Date().getFullYear();

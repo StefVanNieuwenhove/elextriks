@@ -5,7 +5,7 @@ import { PhoneCall } from 'lucide-react';
 import NavLink from './NavLink';
 import { SidebarTrigger, useSidebar } from '../ui/sidebar';
 import { Links } from '@/lib/Links';
-import { H1 } from '../typo';
+import { H1 } from '../typography';
 import { usePathname } from 'next/navigation';
 
 const Navbar = () => {

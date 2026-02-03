@@ -1,5 +1,5 @@
 import ServicesCard from '@/components/card/ServicesCard';
-import { H2 } from '@/components/typo';
+import { H2 } from '@/components/typography';
 import { Button } from '@/components/ui/button';
 import { ServicesContent } from '@/lib/ServicesContent';
 
