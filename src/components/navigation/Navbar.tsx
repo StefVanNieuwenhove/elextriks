@@ -1,6 +1,5 @@
 'use client';
 
-import { useState } from 'react';
 import { Button } from '../ui/button';
 import { PhoneCall } from 'lucide-react';
 import NavLink from './NavLink';
@@ -12,7 +11,6 @@ import { usePathname } from 'next/navigation';
 const Navbar = () => {
   const { isMobile } = useSidebar();
   const pathname = usePathname();
-  //const [active, setActive] = useState('/');
 
   const isActive = (href: string) => pathname === href;
 
@@ -30,7 +28,6 @@ const Navbar = () => {
               href={link.href}
               icon={link.icon}
               active={isActive(link.href)}
-              //setActive={setActive}
             />
           ))}
         </nav>

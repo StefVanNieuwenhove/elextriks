@@ -1,11 +1,8 @@
-import NavLink from './NavLink';
 import Image from 'next/image';
 import logo from '../../../public/logo_elextriks.jpeg';
-import { Links } from '@/lib/Links';
-import Link from 'next/link';
 import { UserRound, PhoneCall, Mail } from 'lucide-react';
 import { Button } from '../ui/button';
-import { TypoLarge } from '../Typo';
+import { TypoLarge } from '../typo';
 
 const Footer = () => {
   const year = new Date().getFullYear();
