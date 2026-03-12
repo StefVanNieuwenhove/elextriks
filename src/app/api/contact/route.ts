@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 import { env } from '@/env';
 
 export async function POST(req: Request) {
-  const { name, email, message } = await req.json();
+  const { name, email, message, subject, phone } = await req.json();
   console.log(name, email, message);
 
   const transporter = nodemailer.createTransport({
@@ -16,11 +16,13 @@ export async function POST(req: Request) {
     },
   });
 
+  const textmessage = `Naam: ${name}\nEmail: ${email}\nTelefoon: ${phone}\n\nBericht:\n${message}`;
+
   const mailOptions = {
-    from: 'stef.vannieuwenhove@telenet.be',
+    from: `${name} <${email}>`,
     to: 'stef.vannieuwenhove@telenet.be',
-    subject: `test mail`,
-    text: `<p>joepie het werky</p>`,
+    subject: `${subject} - Contactformulier Elextriks`,
+    text: textmessage,
   };
 
   try {
@@ -34,7 +36,7 @@ export async function POST(req: Request) {
     console.error('Email error:', error);
     return NextResponse.json(
       { success: false },
-      { status: 500, statusText: 'Email not sent' }
+      { status: 500, statusText: 'Email not sent' },
     );
   }
 }

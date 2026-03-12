@@ -43,26 +43,28 @@ const ContactPage = () => {
     console.log(data);
   };
 
-  /* const handleSendMail = async () => {
-        try {
-          console.log('Sending mail...');
-          const response = await fetch('/api/contact', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              name: 'John Doe',
-              email: 'john.doe@example.com',
-              message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-            }),
-          });
-    
-          console.log(response);
-        } catch (error) {
-          console.error('Error sending mail:', error);
-        }
-      }; */
+  const handleSendMail = async () => {
+    try {
+      console.log('Sending mail...');
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: 'John Doe',
+          email: 'john.doe@example.com',
+          message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+          subject: 'Test email from contact form',
+          phone: '+32 471 12 34 56',
+        }),
+      });
+
+      console.log(response);
+    } catch (error) {
+      console.error('Error sending mail:', error);
+    }
+  };
   return (
     <>
       <section
@@ -133,7 +135,7 @@ const ContactPage = () => {
                           <FormControl>
                             <Input
                               type='tel'
-                              placeholder='+32 16 12 34 56'
+                              placeholder='+32 471 12 34 56'
                               {...field}
                               required
                             />
@@ -149,7 +151,8 @@ const ContactPage = () => {
                         <FormItem>
                           <FormLabel>Onderwerp</FormLabel>
                           <FormControl>
-                            <Textarea
+                            <Input
+                              type='text'
                               placeholder='Onderwerp'
                               {...field}
                               required
@@ -159,8 +162,28 @@ const ContactPage = () => {
                         </FormItem>
                       )}
                     />
+                    <FormField
+                      control={form.control}
+                      name='message'
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Bericht</FormLabel>
+                          <FormControl>
+                            <Textarea
+                              placeholder='Bericht'
+                              {...field}
+                              required
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
                   </form>
-                  <Button type='submit' className='mt-4 w-full'>
+                  <Button
+                    type='submit'
+                    className='mt-4 w-full'
+                    onClick={handleSendMail}>
                     Verzenden
                   </Button>
                 </Form>

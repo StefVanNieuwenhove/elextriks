@@ -40,7 +40,7 @@ const SideBar = () => {
               onClick={toggleSidebar}>
               <SidebarMenuButton asChild>
                 <Link href={link.href}>
-                  {link.icon} <span>{link.name}</span>
+                  <span className='text-lg'>{link.name}</span>
                 </Link>
               </SidebarMenuButton>
             </SidebarMenuItem>
