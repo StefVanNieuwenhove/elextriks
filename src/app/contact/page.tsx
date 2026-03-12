@@ -1,5 +1,6 @@
 'use client';
 
+import { Contact } from '@/components/pages';
 import {
   FormControl,
   FormDescription,
@@ -56,7 +57,8 @@ const ContactPage = () => {
   }; */
   return (
     <>
-      <div>ContactPage</div>
+      <Contact />
+      {/* <div>ContactPage</div>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(handleSubmit)} className='space-y-4'>
           <FormField
@@ -74,7 +76,7 @@ const ContactPage = () => {
             )}
           />
         </form>
-      </Form>
+      </Form> */}
     </>
   );
 };

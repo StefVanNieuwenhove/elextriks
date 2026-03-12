@@ -2,7 +2,8 @@ import { Link } from './types';
 import { House, Mail, UserRound } from 'lucide-react';
 
 export const Links: Link[] = [
-  { name: 'Home', href: '/', icon: <House /> },
-  { name: 'About me', href: '/aboutme', icon: <UserRound /> },
-  { name: 'Contact', href: '/contact', icon: <Mail /> },
+  { name: 'Home', href: '#home' },
+  { name: 'Over mij', href: '#aboutme' },
+  { name: 'Diensten', href: '#services' },
+  { name: 'Contact', href: '#contact' },
 ];

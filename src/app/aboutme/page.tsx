@@ -1,7 +1,8 @@
+import { AboutMe } from '@/components/pages';
 import React from 'react';
 
 const AboutMePage = () => {
-  return <div>AboutMePage</div>;
+  return <AboutMe />;
 };
 
 export default AboutMePage;

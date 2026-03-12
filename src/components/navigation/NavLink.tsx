@@ -4,19 +4,17 @@ import Link from 'next/link';
 type NavLinkProps = {
   name: string;
   href: string;
-  icon: React.ReactNode;
   active?: boolean;
   //setActive?: React.Dispatch<React.SetStateAction<string>>;
 };
 
-const NavLink = ({ name, href, icon, active }: NavLinkProps) => {
+const NavLink = ({ name, href, active }: NavLinkProps) => {
   return (
     <Link key={name} href={href}>
       <Button
         variant={active ? 'default' : 'link'}
         className='hover:cursor-pointer hover:underline text-md'>
-        {icon}
-        <span>{name}</span>
+        {name}
       </Button>
     </Link>
   );
