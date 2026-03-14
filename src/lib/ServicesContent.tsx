@@ -10,7 +10,7 @@ import HouseConform from '/public/images/woning-keuringklaar.jpg';
 
 export const ServicesContent: ServiceContent[] = [
   {
-    title: 'Nieuw bouw',
+    title: 'Nieuwbouw',
     description: [
       'Volledige elektrische installatie',
       'Plaatsen van leidingen en kabels',
@@ -30,7 +30,7 @@ export const ServicesContent: ServiceContent[] = [
     image: <Image src={Renovatie} alt='Renovatie' className='object-cover' />,
   },
   {
-    title: 'Woning keuringklaar maken',
+    title: 'Woning keuringsklaar maken',
     description: [
       'Woning conform zetten',
       'Vervangen/bijplaatsen van zekeringen, differentieelschakelaars en aarding',
@@ -44,7 +44,7 @@ export const ServicesContent: ServiceContent[] = [
     ),
   },
   {
-    title: '24/7, depanage',
+    title: '24/7, depannage',
     description: [
       'Storingen',
       'Problematiek opsporing en oplossen',
@@ -65,7 +65,7 @@ export const ServicesContent: ServiceContent[] = [
     ),
   },
   {
-    title: 'Demotica',
+    title: 'Domotica',
     description: [
       'Automatische besturingen van verlichting, verwarming, ventilatie en zonwering',
       'Meer comfort',

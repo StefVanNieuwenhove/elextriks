@@ -5,7 +5,6 @@ import { Card, CardContent, CardHeader } from '../ui/card';
 import { Clock, MapPin, Phone } from 'lucide-react';
 import {
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -18,6 +17,7 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { Textarea } from '../ui/textarea';
 import { Button } from '../ui/button';
+import { toast } from 'sonner';
 
 const ContactFormValidationSchema = z.object({
   subject: z.string().min(1),
@@ -45,24 +45,31 @@ const ContactPage = () => {
 
   const handleSendMail = async () => {
     try {
-      console.log('Sending mail...');
+      toast.loading('Bericht verzenden...');
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          name: 'John Doe',
-          email: 'john.doe@example.com',
-          message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-          subject: 'Test email from contact form',
-          phone: '+32 471 12 34 56',
+          name: form.getValues('name'),
+          email: form.getValues('email'),
+          message: form.getValues('message'),
+          subject: form.getValues('subject'),
+          phone: form.getValues('phone'),
         }),
       });
 
-      console.log(response);
+      if (response.ok) {
+        toast.success('Bericht succesvol verzonden!');
+      } else {
+        toast.error('Er is iets fout opgetreden!');
+      }
     } catch (error) {
       console.error('Error sending mail:', error);
+      toast.error('Er is iets fout opgetreden!');
+    } finally {
+      form.reset();
     }
   };
   return (
@@ -183,6 +190,9 @@ const ContactPage = () => {
                   <Button
                     type='submit'
                     className='mt-4 w-full'
+                    disabled={
+                      !form.formState.isValid || form.formState.isSubmitting
+                    }
                     onClick={handleSendMail}>
                     Verzenden
                   </Button>
@@ -213,7 +223,7 @@ const ContactPage = () => {
                     <p className='font-bold'>Telefoon</p>
                   </div>
                   <div className='ml-10'>
-                    <p>+32 16 12 34 56</p>
+                    <p>+32 497 20 93 77</p>
                   </div>
                 </div>
                 <div>
@@ -232,14 +242,13 @@ const ContactPage = () => {
             </Card>
             <Card className='h-[300px] p-0 rounded'>
               <iframe
-                width={'100%'}
-                height={'300px'}
+                src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2514.0477891234567!2d4.0858!3d50.9047!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c3e5a5e5a5e5a5%3A0x5a5a5a5a5a5a5a5a!2sCalloystraat%2030A%2C%201790%20Affligem!5e0!3m2!1snl!2sbe!4v1234567890'
+                width='100%'
+                height='300'
                 loading='lazy'
-                style={{ border: '0px' }}
                 referrerPolicy='no-referrer-when-downgrade'
                 title='Elextriks Limbourg - Calloystraat 30A, 1790 Affligem'
-                src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2514.0477891234567!2d4.0858!3d50.9047!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c3e5a5e5a5e5a5%3A0x5a5a5a5a5a5a5a5a!2sCalloystraat%2030A%2C%201790%20Affligem!5e0!3m2!1snl!2sbe!4v1234567890'
-              />
+                style={{ border: '0px' }}></iframe>
             </Card>
           </article>
         </div>

@@ -32,9 +32,12 @@ const Navbar = () => {
           ))}
         </nav>
       )}
-      <Button variant={'default'} className='hover:cursor-pointer text-md'>
-        <PhoneCall /> {isMobile ? <span>24/7</span> : <span>Contact 24/7</span>}
-      </Button>
+      <a href='tel:+32497209377'>
+        <Button variant={'default'} className='hover:cursor-pointer text-md'>
+          <PhoneCall />{' '}
+          {isMobile ? <span>24/7</span> : <span>Contact 24/7</span>}
+        </Button>
+      </a>
     </header>
   );
 };

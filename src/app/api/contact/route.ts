@@ -11,8 +11,8 @@ export async function POST(req: Request) {
     port: 465,
     secure: true,
     auth: {
-      user: process.env.GOOGLE_APP_EMAIL,
-      pass: process.env.GOOGLE_APP_PASSWORD,
+      user: env.GOOGLE_APP_EMAIL,
+      pass: env.GOOGLE_APP_PASSWORD,
     },
   });
 
@@ -20,7 +20,7 @@ export async function POST(req: Request) {
 
   const mailOptions = {
     from: `${name} <${email}>`,
-    to: 'stef.vannieuwenhove@telenet.be',
+    to: 'elextriks@telenet.be',
     subject: `${subject} - Contactformulier Elextriks`,
     text: textmessage,
   };
