@@ -1,27 +1,18 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
 import { Footer, SideBar } from '@/components';
 import { SidebarProvider } from '@/components/ui/sidebar';
 import './globals.css';
 import { Toaster } from '@/components/ui/sonner';
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
-});
-
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
-});
-
 export const metadata: Metadata = {
   title: {
-    default: 'Elextriks',
-    template: '%s | Home',
+    default: 'Elextriks Limbourg',
+    template: '%s | Elextriks',
   },
-  description: 'Personal website',
-  keywords: 'Elextriks, Kobe, limbourg, Elektricity',
+  description:
+    'Professionele elektriciteitswerken voor particulieren en bedrijven in Affligem en omgeving.',
+  keywords: 'Elextriks, Kobe, Limbourg, Elektriciteit, Affligem',
+  themeColor: '#008080',
 };
 
 export default function RootLayout({
@@ -31,15 +22,35 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='nl'>
+      <head>
+        {/* Tahoma is a system font — load Inter as fallback from Google Fonts */}
+        <link rel='preconnect' href='https://fonts.googleapis.com' />
+        <link
+          rel='preconnect'
+          href='https://fonts.gstatic.com'
+          crossOrigin='anonymous'
+        />
+        {/* eslint-disable-next-line @next/next/no-page-custom-font */}
+        <link
+          href='https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap'
+          rel='stylesheet'
+        />
+      </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased max-w-full min-h-screen flex flex-col`}>
-        <SidebarProvider defaultOpen={false}>
-          <main className='w-full flex-grow'>
-            <SideBar />
-            {children}
-          </main>
-          <Toaster />
-        </SidebarProvider>
+        style={{ fontFamily: "Tahoma, 'Noto Sans', Arial, sans-serif" }}
+        className='min-h-screen flex flex-col max-w-full'>
+        {/* Win2000 desktop background (teal) */}
+        <div
+          className='flex-1 flex flex-col'
+          style={{ backgroundColor: '#008080' }}>
+          <SidebarProvider defaultOpen={false}>
+            <main className='w-full flex-grow'>
+              <SideBar />
+              {children}
+            </main>
+            <Toaster />
+          </SidebarProvider>
+        </div>
         <Footer />
       </body>
     </html>
